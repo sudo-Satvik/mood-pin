@@ -30,7 +30,7 @@ const WhySection = () => (
         </div>
 
         <div className="pt-0">
-          <p className="text-xs uppercase tracking-widest text-slate-400 mb-4 font-bold">
+          <p className="text-xs uppercase tracking-widest text-slate-600 mb-4 font-bold">
             Built for
           </p>
           <div className="flex flex-wrap gap-3">
@@ -98,7 +98,7 @@ const WhySection = () => (
             <p className="text-slate-900 text-sm font-bold">
               Saved to Favorites
             </p>
-            <p className="text-slate-400 text-xs font-medium">Just now</p>
+            <p className="text-slate-600 text-xs font-medium">Just now</p>
           </div>
         </div>
       </div>

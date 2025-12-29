@@ -1,5 +1,3 @@
-import { Pin } from "lucide-react";
-
 const Footer = () => (
   <footer className="border-t py-6 text-center">
     <p className="text-zinc-600 text-sm">

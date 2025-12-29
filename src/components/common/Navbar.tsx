@@ -97,6 +97,7 @@ const Navbar = () => {
         <Link
           to={ROUTES_LINKS.HOME_PAGE}
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 cursor-pointer"
+          aria-label="Home"
         >
           <div
             className={`transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${

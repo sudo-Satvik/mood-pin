@@ -11,4 +11,21 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom", "react-router-dom", "axios"],
+          "ui-libs": [
+            "@radix-ui/react-slot",
+            "lucide-react",
+            "framer-motion",
+            "react-toastify",
+          ],
+          state: ["@reduxjs/toolkit", "react-redux"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+  },
 });

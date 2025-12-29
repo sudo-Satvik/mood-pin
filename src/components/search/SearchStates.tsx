@@ -22,7 +22,7 @@ export const EmptySearchState = () => {
       <h3 className="text-2xl font-bold text-slate-800 tracking-tight mb-2">
         Discover your <span className="text-primary">aesthetic</span>.
       </h3>
-      <p className="text-slate-400 max-w-sm mx-auto mb-8 font-medium">
+      <p className="text-slate-600 max-w-sm mx-auto mb-8 font-medium">
         Type something above or pick a vibe to get started.
       </p>
     </div>
@@ -55,7 +55,7 @@ export const ErrorSearchState = ({
       </motion.div>
 
       <h3 className="text-xl font-bold text-slate-800 mb-2">{title}</h3>
-      <p className="text-slate-400 max-w-xs mx-auto mb-6">
+      <p className="text-slate-600 max-w-xs mx-auto mb-6">
         {message} <br /> Try checking your spelling or use general keywords.
       </p>
     </div>
