@@ -1,10 +1,7 @@
-"use client";
-
-import React from "react";
-import type { ICardProps, IMediaItem } from "@/types/interfaces";
 import { capitalize } from "@/utils/strings";
 import { Trash2, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
+import type React from "react";
 
 interface CollectionCardProps {
   id: number | string;
@@ -14,13 +11,13 @@ interface CollectionCardProps {
   onRemove?: (id: number | string) => void;
 }
 
-const CollectionCard: React.FC<CollectionCardProps> = ({
+const CollectionCard = ({
   id,
   type,
   src,
   title,
   onRemove,
-}) => {
+}: CollectionCardProps) => {
   return (
     <div className="group relative w-full h-80 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 bg-gray-100 ring-1 ring-slate-900/5">
       <div className="absolute inset-0 w-full h-full">
@@ -53,7 +50,7 @@ const CollectionCard: React.FC<CollectionCardProps> = ({
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent opacity-60 transition-opacity duration-300 pointer-events-none" />
 
       <button
-        onClick={(e) => {
+        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
           e.stopPropagation();
           onRemove?.(id);
         }}
