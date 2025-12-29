@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /search
+Allow: /collection
+Disallow: /api/
+
+Crawl-delay: 1
+Request-rate: 1/1s
+
