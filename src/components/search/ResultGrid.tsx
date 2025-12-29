@@ -98,7 +98,7 @@ const ResultGrid: React.FC = () => {
   };
 
   return (
-    <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 px-3 gap-5">
+    <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 px-3 gap-5 mb-5">
       {results.map((item) => (
         <a href={item?.url} target="_blank">
           <MediaCard
