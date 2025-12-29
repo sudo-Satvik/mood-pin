@@ -5,14 +5,19 @@ import { MPLogo } from "./BrandLogo";
 import { Link } from "react-router-dom";
 import { ROUTES_LINKS } from "@/routes/route-links";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setQuery, clearResults } from "@/store/slices/search.slice";
+import type { RootState } from "@/store";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const collectionCount = useSelector(
+    (state: RootState) => state.collection.items.length
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -117,7 +122,15 @@ const Navbar = () => {
                 : "bg-white/90 text-slate-800 hover:bg-white shadow-sm"
             }`}
           >
-            <Heart className="w-4 h-4 text-rose-500 fill-current" />
+            <div className="relative">
+              <Heart className="w-4 h-4 text-rose-500 fill-current" />
+
+              {collectionCount > 0 && (
+                <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-rose-500 text-[9px] font-bold text-white ring-2 ring-white">
+                  {collectionCount > 9 ? "9+" : collectionCount}
+                </span>
+              )}
+            </div>
             <span className="hidden sm:inline font-medium text-sm">
               My Collection
             </span>

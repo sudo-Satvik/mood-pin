@@ -17,12 +17,17 @@ const SearchPage = () => {
   const dispatch = useDispatch();
   const searchData = useSelector((state: RootState) => state.search.query);
 
+  const collectionCount = useSelector(
+    (state: RootState) => state.collection.items.length
+  );
+
   useEffect(() => {
     const q = searchParams.get("q");
     if (q) {
       dispatch(setQuery(q));
     }
   }, [searchParams, dispatch]);
+
   return (
     <>
       <main className="w-full min-h-screen">
@@ -31,6 +36,7 @@ const SearchPage = () => {
             <Link to={ROUTES_LINKS.HOME_PAGE} className="cursor-pointer">
               <MPLogo width={120} height={40} />
             </Link>
+
             <div className="flex-1 justify-end z-20 md:hidden flex mr-3">
               <Link
                 to={ROUTES_LINKS.COLLECTION_PAGE}
@@ -40,20 +46,36 @@ const SearchPage = () => {
                   variant="ghost"
                   className={`rounded-full h-10 gap-2 transition-all duration-300 bg-slate-100 text-slate-900 cursor-pointer`}
                 >
-                  <Heart className="w-4 h-4 text-rose-500 fill-current" />
+                  <div className="relative">
+                    <Heart className="w-4 h-4 text-rose-500 fill-current" />
+                    {collectionCount > 0 && (
+                      <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-rose-500 text-[9px] font-bold text-white ring-2 ring-white">
+                        {collectionCount > 9 ? "9+" : collectionCount}
+                      </span>
+                    )}
+                  </div>
                   <span className="font-medium text-sm">My Collection</span>
                 </Button>
               </Link>
             </div>
           </div>
+
           <AnimatedSearch />
+
           <div className="flex-1 justify-end z-20 md:flex hidden">
             <Link to={ROUTES_LINKS.COLLECTION_PAGE} className="cursor-pointer">
               <Button
                 variant="ghost"
                 className={`rounded-full h-10 gap-2 transition-all duration-300 bg-slate-100 text-slate-900 cursor-pointer`}
               >
-                <Heart className="w-4 h-4 text-rose-500 fill-current" />
+                <div className="relative">
+                  <Heart className="w-4 h-4 text-rose-500 fill-current" />
+                  {collectionCount > 0 && (
+                    <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-rose-500 text-[9px] font-bold text-white ring-2 ring-white">
+                      {collectionCount > 9 ? "9+" : collectionCount}
+                    </span>
+                  )}
+                </div>
                 <span className="hidden sm:inline font-medium text-sm">
                   My Collection
                 </span>

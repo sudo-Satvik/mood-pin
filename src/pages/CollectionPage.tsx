@@ -86,7 +86,11 @@ const CollectionPage = () => {
                   className="animate-in fade-in zoom-in duration-500"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <CollectionCard {...item} onRemove={handleRemove} />
+                  <CollectionCard
+                    {...item}
+                    src={item.src ?? ""}
+                    onRemove={handleRemove}
+                  />
                 </div>
               ))}
             </div>
