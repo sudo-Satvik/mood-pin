@@ -11,6 +11,16 @@ const PageLoader = () => (
   </div>
 );
 
+const NotFound = () => (
+  <div className="flex h-screen w-full flex-col items-center justify-center bg-white">
+    <h1 className="md:text-9xl text-4xl font-bold text-primary">404</h1>
+    <p className="mt-4 text-gray-600">Page not found</p>
+    <a href="/" className="mt-6 text-primary hover:underline">
+      Go back home
+    </a>
+  </div>
+);
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -38,6 +48,7 @@ const AppRoutes = () => {
           </Suspense>
         }
       />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
