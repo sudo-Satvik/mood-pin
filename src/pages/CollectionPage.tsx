@@ -89,7 +89,7 @@ const CollectionPage = () => {
                   <CollectionCard
                     {...item}
                     src={item?.src ?? ""}
-                    title={item?.src ?? ""}
+                    title={item?.title ?? ""}
                     onRemove={handleRemove}
                   />
                 </div>

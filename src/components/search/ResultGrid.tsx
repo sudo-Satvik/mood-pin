@@ -28,8 +28,6 @@ const ResultGrid: React.FC = () => {
     const getData = async () => {
       if (!query.trim()) return;
 
-      if (resultsByTab[activeTab]?.length) return;
-
       try {
         dispatch(setLoading());
         let data: IMediaItem[] = [];
@@ -86,11 +84,11 @@ const ResultGrid: React.FC = () => {
     return <EmptySearchState />;
   }
 
-  if (query && results.length === 0 && !loading) {
+  if (loading) return <LoadingState />;
+
+  if (query && results?.length === 0) {
     return <ErrorSearchState title={`No Results found of "${query}"`} />;
   }
-
-  if (loading) return <LoadingState />;
 
   const handleAddToCollection = (item: IMediaItem) => {
     dispatch(addCollection(item));
@@ -99,7 +97,7 @@ const ResultGrid: React.FC = () => {
 
   return (
     <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 px-3 gap-5 mb-5">
-      {results.map((item) => (
+      {results?.map((item) => (
         <MediaCard
           key={item.id}
           mediaType={item.type}
