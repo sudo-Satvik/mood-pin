@@ -28,7 +28,11 @@ const Navbar = () => {
   }, []);
 
   const handleSearchNav = () => {
-    if (!searchQuery.trim()) navigate(ROUTES_LINKS.SEARCH_PAGE);
+    if (!searchQuery.trim()) {
+      navigate(ROUTES_LINKS.SEARCH_PAGE);
+      return;
+    }
+
     dispatch(setQuery(searchQuery));
     navigate(
       `${ROUTES_LINKS.SEARCH_PAGE}?q=${encodeURIComponent(searchQuery)}`
@@ -68,12 +72,17 @@ const Navbar = () => {
               } 
               w-10 hover:w-64 border border-transparent hover:border-slate-200 hover:shadow-md hover:bg-white`}
             onClick={() => {
+              // Sirf tab focus karega jab container pe click ho (not icon)
               document.getElementById("nav-search-input")?.focus();
             }}
           >
+            {/* --- UPDATED SEARCH ICON WRAPPER --- */}
             <div
-              className="absolute left-0 top-0 h-full w-10 flex items-center justify-center text-slate-500 group-hover:text-primary transition-colors"
-              onClick={handleSearchNav}
+              className="absolute left-0 top-0 h-full w-10 flex items-center justify-center text-slate-500 group-hover:text-primary transition-colors z-10"
+              onClick={(e) => {
+                e.stopPropagation(); // Parent ka click/focus rokne ke liye
+                handleSearchNav(); // Seedha navigation trigger karega
+              }}
             >
               <Search className="w-5 h-5" />
             </div>
@@ -90,8 +99,11 @@ const Navbar = () => {
             {searchQuery && (
               <button
                 type="button"
-                onClick={handleClearSearch}
-                className="absolute right-3 text-slate-400 hover:text-slate-600 transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleClearSearch();
+                }}
+                className="absolute right-3 text-slate-400 hover:text-slate-600 transition-colors z-20"
               >
                 ✕
               </button>

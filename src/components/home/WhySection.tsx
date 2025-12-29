@@ -4,7 +4,7 @@ import featured2 from "@/assets/home/featured-2.webp";
 import featured3 from "@/assets/home/featured-3.webp";
 
 const WhySection = () => (
-  <section className="py-32 border-y border-slate-200 bg-slate-50 relative overflow-hidden">
+  <section className="md:py-32 py-16 border-y border-slate-200 bg-slate-50 relative overflow-hidden">
     <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative z-10">
       {/* Text Content */}
       <div className="space-y-8 order-2 md:order-1">
@@ -48,7 +48,7 @@ const WhySection = () => (
         </div>
       </div>
 
-      <div className="order-1 md:order-2 relative h-100 w-full bg-white rounded-2xl border border-slate-200 p-4 rotate-3 hover:rotate-0 transition-all duration-500 shadow-2xl shadow-slate-200/60">
+      <div className="order-1 md:order-2 relative h-100 w-full bg-white rounded-2xl border border-slate-200 p-4 md:rotate-3 md:hover:rotate-0 rotate-0 transition-all duration-500 shadow-2xl shadow-slate-200/60">
         <div className="grid h-full grid-cols-2 gap-4">
           {/* Left big image */}
           <div className="relative h-full w-full overflow-hidden rounded-lg bg-slate-100">
