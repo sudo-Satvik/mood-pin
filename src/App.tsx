@@ -1,10 +1,12 @@
 import AppRoutes from "./routes/Routes";
 import { Flip, ToastContainer } from "react-toastify";
+import { SpeedInsights } from "./components/common/SpeedInsights";
 
 function App() {
   return (
     <>
       <AppRoutes />
+      <SpeedInsights />
       <ToastContainer
         position="top-right"
         autoClose={3000}
