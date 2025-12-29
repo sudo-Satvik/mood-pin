@@ -6,6 +6,14 @@
 
 **A modern media discovery platform** - Search and collect images, videos, and GIFs from multiple sources
 
+<p><b>Powered By</b></p>
+
+![Unsplash](https://img.shields.io/badge/Unsplash-000000?style=for-the-badge&logo=unsplash&logoColor=white)
+![Pexels](https://img.shields.io/badge/Pexels-05A081?style=for-the-badge&logo=pexels&logoColor=white)
+![Tenor](https://img.shields.io/badge/Tenor-4285F4?style=for-the-badge&logo=google&logoColor=white)
+
+<br />
+
 ![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-7.2.4-646CFF?style=for-the-badge&logo=vite&logoColor=white)
@@ -27,7 +35,7 @@
 
 <div align="center">
 
-![Demo GIF](./demo.gif)
+![Demo GIF](meta/demo.gif)
 
 _Interactive demo showcasing MoodPin's search and collection features_
 
@@ -37,21 +45,15 @@ _Interactive demo showcasing MoodPin's search and collection features_
 
 <div align="center">
 
-#### Landing Page
-
-![Landing Page](./screenshots/landing.png)
-
-#### Search Results
-
-![Search Results](./screenshots/search.png)
-
-#### Collection Page
-
-![Collection Page](./screenshots/collection.png)
+![Landing Page](meta/cover.jpg)
 
 #### Mobile View
 
-![Mobile View](./screenshots/mobile.png)
+![Search Results](meta/mweb.jpg)
+
+#### Desktop View
+
+![Collection Page](meta/web.jpg)
 
 </div>
 
@@ -112,7 +114,7 @@ _Interactive demo showcasing MoodPin's search and collection features_
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/mood-pin.git
+   git clone https://github.com/sudo-Satvik/mood-pin
    cd mood-pin
    ```
 
