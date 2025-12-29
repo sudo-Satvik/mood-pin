@@ -1,6 +1,13 @@
 import { Search } from "lucide-react";
 import { Button } from "../ui/button";
 import { avatars } from "@/utils/iterables";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setQuery } from "@/store/slices/search.slice";
+import { useNavigate } from "react-router-dom";
+import { ROUTES_LINKS } from "@/routes/route-links";
+import type { AppDispatch } from "@/store";
+import heroBg from "@/assets/home/hero-bg-28122025.webp";
 
 const Star = ({ className }: { className: string }) => {
   return (
@@ -33,22 +40,29 @@ const StarRating = ({ total = 5 }) => {
 };
 
 const HeroSection = () => {
+  const [localQuery, setLocalQuery] = useState<string>("");
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
+  const handleHeroSearch = () => {
+    if (!localQuery.trim()) return;
+    dispatch(setQuery(localQuery));
+    navigate(`${ROUTES_LINKS.SEARCH_PAGE}?q=${localQuery}`);
+    setLocalQuery("");
+  };
+
+  const handleTagSearchQuery = (tag: string) => {
+    dispatch(setQuery(tag));
+    navigate(`${ROUTES_LINKS.SEARCH_PAGE}?q=${tag}`);
+  };
   return (
     <header
       className="relative h-screen w-full bg-cover bg-center"
-      style={{
-        backgroundImage: "url('src/assets/home/hero-bg-28122025.webp')",
-      }}
+      style={{ backgroundImage: `url(${heroBg})` }}
     >
-      {/* Background image opacity layer */}
       <div className="absolute inset-0 bg-white/40" />
-
-      {/* Radial white glow (center focus) */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.85)_0%,rgba(255,255,255,0.55)_30%,rgba(255,255,255,0.25)_50%,rgba(255,255,255,0)_70%)]" />
-
-      {/* Content */}
       <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-4 md:gap-6 px-4">
-        {/* Headings (Original) */}
         <div className="flex flex-col items-center justify-center gap-1 md:gap-5 text-center">
           <h1 className="text-4xl font-bold text-black md:text-6xl">
             Your mood, <span className="text-primary">pinned</span>.
@@ -71,19 +85,29 @@ const HeroSection = () => {
               <input
                 type="text"
                 placeholder="Search 'Aesthetic' or 'Vintage'..."
+                value={localQuery}
+                onChange={(e) => setLocalQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleHeroSearch();
+                }}
                 className="w-full bg-transparent border-none outline-none focus:ring-0 px-3 text-gray-800 placeholder:text-gray-400 font-medium h-10 md:h-11"
               />
-              <Button className="rounded-full px-5 md:px-6 h-10 md:h-11 shadow-sm">
+              <Button
+                className="rounded-full px-5 md:px-6 h-10 md:h-11 shadow-sm"
+                onClick={handleHeroSearch}
+              >
                 Search
               </Button>
             </div>
           </div>
 
           <div className="flex flex-wrap justify-center gap-2 mt-5">
+            <span className="text-slate-700 font-normal">Try:</span>{" "}
             {["Aesthetic", "Minimal", "Cyberpunk", "Nature", "Dark"].map(
               (tag) => (
                 <span
                   key={tag}
+                  onClick={() => handleTagSearchQuery(tag)}
                   className="px-3 py-1 rounded-full bg-white/60 border border-gray-200 text-gray-600 text-xs font-medium cursor-pointer hover:bg-white hover:text-primary hover:border-primary/40 transition-all"
                 >
                   {tag}

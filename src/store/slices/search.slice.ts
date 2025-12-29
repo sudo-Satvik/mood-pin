@@ -1,9 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import type { IMediaItem } from "@/types/interfaces";
+import type { TSearchInitialState } from "@/types/types";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-const initialState: ISearchInitialState = {
+const initialState: TSearchInitialState = {
   query: "",
-  activeTab: "photos",
-  results: [],
+  activeTab: "photo",
+  resultsByTab: {
+    photo: [],
+    video: [],
+    gif: [],
+  },
   loading: false,
   error: null,
 };
@@ -18,8 +24,14 @@ const searchSlice = createSlice({
     setActiveTab: (state, action) => {
       state.activeTab = action.payload;
     },
-    setResults: (state, action) => {
-      state.results = action.payload;
+    setResults: (
+      state,
+      action: PayloadAction<{
+        tab: "photo" | "video" | "gif";
+        data: IMediaItem[];
+      }>
+    ) => {
+      state.resultsByTab[action.payload.tab] = action.payload.data;
       state.loading = false;
     },
     setLoading: (state) => {
@@ -31,7 +43,11 @@ const searchSlice = createSlice({
       state.loading = false;
     },
     clearResults(state) {
-      state.results = [];
+      state.resultsByTab = {
+        photo: [],
+        video: [],
+        gif: [],
+      };
     },
   },
 });
