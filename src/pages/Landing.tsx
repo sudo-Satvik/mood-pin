@@ -8,15 +8,16 @@ import React from "react";
 
 const Landing: React.FC = () => {
   return (
-    <main>
+    <>
       <Navbar />
-      <HeroSection />
-      <Features />
-      <WhySection />
-      <CallToAction />
+      <main>
+        <HeroSection />
+        <Features />
+        <WhySection />
+        <CallToAction />
+      </main>
       <Footer />
-      {/* <MoodpinApp /> */}
-    </main>
+    </>
   );
 };
 

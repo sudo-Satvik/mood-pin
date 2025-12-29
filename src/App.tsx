@@ -1,7 +1,25 @@
-import Landing from "./pages/Landing";
+import AppRoutes from "./routes/Routes";
+import { Flip, ToastContainer } from "react-toastify";
 
 function App() {
-  return <Landing />;
+  return (
+    <>
+      <AppRoutes />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Flip}
+      />
+    </>
+  );
 }
 
 export default App;
